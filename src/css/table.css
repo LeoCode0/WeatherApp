@@ -1,0 +1,18 @@
+.table {
+  display: grid;
+  width: 80vw;
+  grid-template-columns: 40vw 40vw;
+  margin: 10px auto;
+  border: 1px solid #f00;
+}
+.table__title {
+  grid-column: 1/3;
+}
+.table__title--h1 {
+  font-size: 20px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #f00;
+}

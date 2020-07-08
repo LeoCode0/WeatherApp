@@ -1,0 +1,16 @@
+.time
+    display: grid
+    grid-template-areas: 'day day' 'hour value_hour' 'date value_date' 
+    width: 80%
+    margin: 0 auto
+    &__day
+        grid-area: day
+        text-align: center
+    &__hour
+        grid-area: hour
+        &--value
+            grid-area: value_hour
+    &__date
+        grid-area: date
+        &--value
+            grid-area: value_date
