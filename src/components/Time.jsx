@@ -4,27 +4,27 @@ import '../css/time.css';
 
 const Time = () => {
     let date = new Date();
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const printDayName = (numberDay) => {
-        return days[numberDay]
-    }
+        return days[numberDay];
+    };
 
     return(
         <div className="time">
-            <div className="time__day">
+            <div className="time__day center">
                 {printDayName(date.getDay())}
             </div>
-            <div className="time__hour">
+            <div className="time__hour center">
                 Hour
             </div>
-            <div className="time__hour--value">
+            <div className="time__hour--value center">
                 {date.toLocaleTimeString()}
             </div>
-            <div className="time__date">
+            <div className="time__date center">
                 Date
             </div>
-            <div className="time__date--value">
+            <div className="time__date--value center">
                 {date.toLocaleDateString()}
             </div>
         </div>

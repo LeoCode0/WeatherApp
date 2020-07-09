@@ -2,11 +2,10 @@
   display: grid;
   grid-template-areas: 'day day' 'hour value_hour' 'date value_date';
   width: 80%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .time__day {
   grid-area: day;
-  text-align: center;
 }
 .time__hour {
   grid-area: hour;
