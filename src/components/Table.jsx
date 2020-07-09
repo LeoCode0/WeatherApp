@@ -14,7 +14,7 @@ class Table extends React.Component{
         };
     };
     baseApi = 'https://api.openweathermap.org/data/2.5/weather?'
-    key = 'dc74b6c12c387f6a0ccaa6cd0f1fd846'
+    key = ''
     API = `${this.baseApi}lat=20.3&lon=-97.97&appid=${this.key}`
 
     async componentDidMount(){
@@ -32,16 +32,41 @@ class Table extends React.Component{
         return `${celsius.toFixed(1)}°C`
     }
 
+    windDirection = (deg) => {
+        switch (true){
+            case deg >= 0 | 360:
+                return 'North'
+            case deg > 0 && deg < 90:
+                return 'Northeast'
+            case deg === 90:
+                return 'East'
+            case deg > 90 && deg < 180:
+                return 'Southeast'
+            case deg === 180:
+                return 'South'
+            case deg > 180 && deg < 270:
+                return 'Southwest'
+            case deg === 270:
+                return 'West'
+            case deg > 270:
+                return 'Northwest'
+            default:
+                return 'North'
+        }
+    }
+
     render(){
         if(this.state.done === false && this.state.loading === true){
             return <h1>Loading</h1>
         }
         
         if (this.state.done === true){
-            let weather = this.state.data.weather[0]
-            let main = this.state.data.main
-            let coord = this.state.data.coord
-            let image = `https://openweathermap.org/img/wn/${weather.icon}.png`
+            const weather = this.state.data.weather[0]
+            const main = this.state.data.main
+            const coord = this.state.data.coord
+            const image = `https://openweathermap.org/img/wn/${weather.icon}.png`
+            const wind = this.state.data.wind
+            const windDirection = this.windDirection(wind.deg)
             return(
                 <React.Fragment>
                     <div className="weather center">
@@ -50,6 +75,10 @@ class Table extends React.Component{
                         </div>
                         <span>{weather.main}: {weather.description}</span>
                         <span className="">{this.convertKelvinToCelsius(main.temp)}</span>
+                        <div className="">
+                            <p className="">Wind direction: {windDirection} {wind.deg}°</p>
+                            <span className="">Wind speed: {wind.speed} m/s</span>
+                        </div>
                     </div>
                     <div className="table">
                         <div className="table__title">
