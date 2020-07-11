@@ -1,0 +1,23 @@
+centerContent()
+    display: flex
+    justify-content: center
+
+.weather
+    display: grid
+    grid-template-areas: 'image image image' 'weather-desc weather-wind weather-wind'
+    margin: 0 30px
+    &__container
+        grid-area: image
+        centerContent()
+    &__description
+        grid-area: weather-desc
+        &--span
+            centerContent()
+    &__wind
+        grid-area: weather-wind
+        &--orientation, &--speed
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin: 0
+

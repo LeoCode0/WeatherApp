@@ -1,0 +1,27 @@
+.weather {
+  display: grid;
+  grid-template-areas: 'image image image' 'weather-desc weather-wind weather-wind';
+  margin: 0 30px;
+}
+.weather__container {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+}
+.weather__description {
+  grid-area: weather-desc;
+}
+.weather__description--span {
+  display: flex;
+  justify-content: center;
+}
+.weather__wind {
+  grid-area: weather-wind;
+}
+.weather__wind--orientation,
+.weather__wind--speed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
