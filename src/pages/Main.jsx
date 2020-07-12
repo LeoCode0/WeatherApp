@@ -3,7 +3,7 @@ import getData from "../util/getData";
 
 import Table from "../components/Table";
 import GraphicWeather from "../components/GraphicWeather";
-import NextDay from "../components/NextDay";
+import Week from "../components/Week";
 
 class Main extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class Main extends React.Component {
         <React.Fragment>
           <GraphicWeather props={this.state.data} />
           <Table props={this.state.data} />
-          <NextDay />
+          <Week />
         </React.Fragment>
       );
     }
