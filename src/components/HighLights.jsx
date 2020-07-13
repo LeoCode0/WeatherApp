@@ -1,38 +1,38 @@
 import React from "react";
 import convertKelvinToCelsius from "../util/convertKelvinToCelsius";
 
-const Highlights = ({ props }) => {
-  const main = props.main;
-  const coord = props.coord;
+const Highlights = () => {
   return (
-    <React.Fragment>
-    <h1>Highlights</h1>
-      {/* <h1 className="table__title--h1 center">{props.name}</h1>
-      <div className="table">
-        <div className="table__names">
-          <span className="table__names--span center">Temperature</span>
-          <span className="table__names--span center">Feels like</span>
-          <span className="table__names--span center">humidity</span>
-          <span className="table__names--span center">coordinates</span>
-          <span className="table__names--span center">coordinates</span>
-        </div>
-        <div className="table__values">
-          <span className="table__values--span center">
-            {convertKelvinToCelsius(main.temp)}
-          </span>
-          <span className="table__values--span center">
-            {convertKelvinToCelsius(main.feels_like)}
-          </span>
-          <span className="table__values--span center">{main.humidity}%</span>
-          <span className="table__values--span center">
-            Longitude: {coord.lon}
-          </span>
-          <span className="table__values--span center">
-            Latitude: {coord.lat}
-          </span>
-        </div>
-      </div> */}
-    </React.Fragment>
+    <section className="highlights">
+      <div className="highlights__card">
+        <p>Test</p>
+        <p>Another Text</p>
+      </div>
+      <div className="highlights__card">
+        <p>Wind status</p>
+        <p>Desc</p>
+        <i>Icon</i>
+      </div>
+      <div className="highlights__card">
+        <span>Sunrise sunset</span>
+        <p>Sunrise</p>
+        <p>Sunset</p>
+      </div>
+      <div className="highlights__card">
+        <h3>humidity</h3>
+        <p>value</p>
+        <div className="graphic"></div>
+      </div>
+      <div className="highlights__card">
+        <p>visibility</p>
+        <span>value</span>
+      </div>
+      <div className="highlights__card">
+        <p>Air quality</p>
+        <p>value</p>
+        <div className="graphic"></div>
+      </div>
+    </section>
   );
 };
 

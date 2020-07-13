@@ -1,7 +1,9 @@
 import React from "react";
 
-import '../css/container.css'
+import Highlights from './HighLights'
 import Week from './Week'
+
+import '../css/container.css'
 
 const Container = () => {
   return (
@@ -19,14 +21,7 @@ const Container = () => {
       </div>
       <div className="container__highlights">
           <h1>Today's highlights</h1>
-          <div className="container__highlights--grid">
-                <div className="">1</div>
-                <div className="">2</div>
-                <div className="">3</div>
-                <div className="">4</div>
-                <div className="">5</div>
-                <div className="">6</div>
-          </div>
+          <Highlights />
       </div>
     </section>
   );

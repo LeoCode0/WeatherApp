@@ -1,7 +1,29 @@
 import React from "react";
-import '../css/currentDay.css';
+import convertKelvinToCelsius from "../util/convertKelvinToCelsius";
+import Time from "../util/time";
 
-const CurrentDay = () => {
+import "../css/currentDay.css";
+
+const CurrentDay = ({ props }) => {
+  const day = Time();
+  console.log(props);
+  const weather = props.weather;
+  const temp = convertKelvinToCelsius(props.main.temp);
+  const name = props.name;
+  const image = `https://openweathermap.org/img/wn/${weather[0].icon}.png`;
+  let weatherSecondary;
+  let weatherSecondaryDesc;
+  let weatherSecondaryImg;
+
+  if (weather[1] !== undefined) {
+    weatherSecondary = weather[1];
+    weatherSecondaryImg = `https://openweathermap.org/img/wn/${weatherSecondary.icon}.png`;
+    weatherSecondaryDesc = weatherSecondary.description;
+  } else {
+    weatherSecondary = "";
+    weatherSecondaryImg = "";
+    weatherSecondaryDesc = "";
+  }
   return (
     <section className="currentDay">
       <form className="currentDay__form">
@@ -19,31 +41,33 @@ const CurrentDay = () => {
       </form>
       <div className="currentDay__imageContainer">
         <img
-          src="https://picsum.photos/350"
+          src={image}
           alt="Current weather"
           className="currentDay__imageContainer--image"
         />
       </div>
       <div className="currentDay__temp">
-          <h1 className="currentDay__temp--grades">12 </h1>
-          <span className="currentDay__temp--unit">°C</span>
+        <h1 className="currentDay__temp--grades">{temp} </h1>
+        <span className="currentDay__temp--unit">°C</span>
       </div>
       <div className="currentDay__details">
-        <span className="currentDay__details--day">Monday, </span>
-        <span className="currentDay__details--hour">16:00</span>
+        <span className="currentDay__details--day">{day.name}, </span>
+        <span className="currentDay__details--hour">
+          {day.date.getHours()}:{day.date.getMinutes()}
+        </span>
       </div>
       <div className="currentDay__weather">
         <div className="currentDay__weather--icon">
-          <i>Icon</i>
-          <i>Icon2</i>
+          <img src={image} alt={weather[0].description} />
+          <img src={weatherSecondaryImg} alt={weatherSecondaryDesc} />
         </div>
         <div className="currentDay__weather--description">
-          <p>Text 1</p>
-          <p>Text 2</p>
+          <p>{weather[0].description}</p>
+          <p>{weatherSecondaryDesc}</p>
         </div>
       </div>
       <div className="currentDay__name">
-        <span className="currentDay__name--span">Xicotepec de Juarez</span>
+        <span className="currentDay__name--span">{name}</span>
       </div>
     </section>
   );

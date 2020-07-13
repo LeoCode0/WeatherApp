@@ -1,8 +1,8 @@
 import React from "react";
 import getData from "../util/getData";
 
-import HighLights from "../components/HighLights";
-import Week from "../components/Week";
+// import HighLights from "../components/HighLights";
+// import Week from "../components/Week";
 import CurrentDay from '../components/CurrentDay';
 import Container from '../components/Container'
 
@@ -42,7 +42,7 @@ class Main extends React.Component {
     if (this.state.done === true) {
       return (
         <main className="principal">
-          <CurrentDay />
+          <CurrentDay props={this.state.data}/>
           <Container />
           {/* <GraphicWeather props={this.state.data} />
           <HighLights props={this.state.data} />
