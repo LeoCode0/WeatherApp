@@ -2,6 +2,8 @@ import React from "react";
 import getData from "../util/getData";
 import Day from "./Day";
 
+import '../css/week.css'
+
 class Week extends React.Component {
   constructor() {
     super();
@@ -32,16 +34,15 @@ class Week extends React.Component {
     if (this.state.done === true) {
       console.log(this.state.data);
       const list = this.state.data.list;
-      const dates = list.map((x) => x.dt_txt.replace("-", " "));
-      console.log(dates)
+      // const dates = list.map((x) => x.dt_txt.replace("-", " "));
+      // console.log(dates)
       return (
         <div className="week">
-          <h1>Days</h1>
-          {/* <Day date={dates[3]} list={list[3]} />
-          <Day date={dates[11]} list={list[11]} />
-          <Day date={dates[19]} list={list[19]} />
-          <Day date={dates[27]} list={list[27]} />
-          <Day date={dates[35]} list={list[35]} /> */}
+          <Day props={list[0]} />
+          <Day props={list[8]} />
+          <Day props={list[16]} />
+          <Day props={list[24]} />
+          <Day props={list[32]} />
         </div>
       );
     }

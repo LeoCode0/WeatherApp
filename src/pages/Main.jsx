@@ -2,9 +2,11 @@ import React from "react";
 import getData from "../util/getData";
 
 import HighLights from "../components/HighLights";
-import GraphicWeather from "../components/GraphicWeather";
 import Week from "../components/Week";
 import CurrentDay from '../components/CurrentDay';
+import Container from '../components/Container'
+
+import '../css/principal.css'
 
 class Main extends React.Component {
   constructor() {
@@ -39,12 +41,14 @@ class Main extends React.Component {
 
     if (this.state.done === true) {
       return (
-        <React.Fragment>
+        <main className="principal">
           <CurrentDay />
+          <Container />
           {/* <GraphicWeather props={this.state.data} />
           <HighLights props={this.state.data} />
           <Week /> */}
-        </React.Fragment>
+        </main>
+        
       );
     }
   }

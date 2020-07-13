@@ -1,6 +1,5 @@
 import React from "react";
 import convertKelvinToCelsius from "../util/convertKelvinToCelsius";
-import "../css/table.css";
 
 const Highlights = ({ props }) => {
   const main = props.main;
