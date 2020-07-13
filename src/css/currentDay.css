@@ -1,0 +1,98 @@
+.currentDay {
+  padding: 20px;
+  width: 25vw;
+}
+.currentDay__form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.currentDay__form--icon {
+  font-size: 20px;
+  z-index: 21;
+}
+.currentDay__form--input,
+.currentDay__form--button {
+  background-color: none;
+  height: 30px;
+  border: 0;
+}
+.currentDay__form--input {
+  position: relative;
+  padding-left: 6%;
+  width: 80%;
+}
+.currentDay__form--button {
+  border-radius: 50px;
+}
+.currentDay__imageContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.currentDay__imageContainer--image {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+}
+.currentDay__temp {
+  display: flex;
+  margin: 20px 0;
+}
+.currentDay__temp--grades {
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+.currentDay__temp--unit {
+  margin-top: 0.4em;
+  font-size: 2rem;
+}
+.currentDay__details {
+  font-size: 1.3rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #808080;
+}
+.currentDay__details--day {
+  font-weight: 800;
+}
+.currentDay__details--hour {
+  opacity: 0.6;
+}
+.currentDay__weather {
+  margin: 1.2rem 0;
+  width: 100%;
+  display: flex;
+}
+.currentDay__weather--icon {
+  width: max-content;
+  margin-right: 1rem;
+}
+.currentDay__weather--icon i {
+  width: auto;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.currentDay__weather--description {
+  width: 60%;
+}
+.currentDay__weather--description p {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.currentDay__name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 10vh;
+  margin: 3rem auto 0 auto;
+  background-image: url("https://picsum.photos/200");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}

@@ -2,12 +2,13 @@ import React from "react";
 import convertKelvinToCelsius from "../util/convertKelvinToCelsius";
 import "../css/table.css";
 
-const Table = ({ props }) => {
+const Highlights = ({ props }) => {
   const main = props.main;
   const coord = props.coord;
   return (
     <React.Fragment>
-      <h1 className="table__title--h1 center">{props.name}</h1>
+    <h1>Highlights</h1>
+      {/* <h1 className="table__title--h1 center">{props.name}</h1>
       <div className="table">
         <div className="table__names">
           <span className="table__names--span center">Temperature</span>
@@ -31,9 +32,9 @@ const Table = ({ props }) => {
             Latitude: {coord.lat}
           </span>
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 };
 
-export default Table;
+export default Highlights;

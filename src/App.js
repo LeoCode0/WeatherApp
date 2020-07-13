@@ -8,7 +8,6 @@ import './css/table.css'
 function App() {
   return (
     <div className="main">
-      <Time />
       <Main />
     </div>
   );

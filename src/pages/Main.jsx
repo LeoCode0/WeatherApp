@@ -1,9 +1,10 @@
 import React from "react";
 import getData from "../util/getData";
 
-import Table from "../components/Table";
+import HighLights from "../components/HighLights";
 import GraphicWeather from "../components/GraphicWeather";
 import Week from "../components/Week";
+import CurrentDay from '../components/CurrentDay';
 
 class Main extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ class Main extends React.Component {
     };
   }
   baseApi = "https://api.openweathermap.org/data/2.5/weather?";
-  key = "dc74b6c12c387f6a0ccaa6cd0f1fd846";
+  key = "0d28130d18dabc0c8a5038cf0d28b917";
   API = `${this.baseApi}lat=20.3&lon=-97.97&appid=${this.key}`;
 
   async componentDidMount() {
@@ -29,6 +30,8 @@ class Main extends React.Component {
     });
   }
 
+  //Cambiar props de componente week
+
   render() {
     if (this.state.done === false && this.state.loading === true) {
       return <h1>Loading</h1>;
@@ -37,9 +40,10 @@ class Main extends React.Component {
     if (this.state.done === true) {
       return (
         <React.Fragment>
-          <GraphicWeather props={this.state.data} />
-          <Table props={this.state.data} />
-          <Week />
+          <CurrentDay />
+          {/* <GraphicWeather props={this.state.data} />
+          <HighLights props={this.state.data} />
+          <Week /> */}
         </React.Fragment>
       );
     }

@@ -12,7 +12,7 @@ class Week extends React.Component {
     };
   }
   baseApi = "https://api.openweathermap.org/data/2.5/forecast?";
-  key = "dc74b6c12c387f6a0ccaa6cd0f1fd846";
+  key = "0d28130d18dabc0c8a5038cf0d28b917";
   API = `${this.baseApi}lat=20.3&lon=-97.97&appid=${this.key}`;
 
   async componentDidMount() {
@@ -36,11 +36,12 @@ class Week extends React.Component {
       console.log(dates)
       return (
         <div className="week">
-          <Day date={dates[3]} list={list[3]} />
+          <h1>Days</h1>
+          {/* <Day date={dates[3]} list={list[3]} />
           <Day date={dates[11]} list={list[11]} />
           <Day date={dates[19]} list={list[19]} />
           <Day date={dates[27]} list={list[27]} />
-          <Day date={dates[35]} list={list[35]} />
+          <Day date={dates[35]} list={list[35]} /> */}
         </div>
       );
     }

@@ -33,7 +33,8 @@ const GraphicWeather = ({props}) => {
     const windOrientation = windDirection(wind.deg)
     return(
         <div className="weather">
-            <div className="weather__container">
+            <h1>GraphicWeather</h1>
+            {/* <div className="weather__container">
                 <img src={image} alt="Weather" className="weather__container--image"/>
             </div>
             <div className="weather__description">
@@ -48,7 +49,7 @@ const GraphicWeather = ({props}) => {
                 <p className="weather__wind--speed">Wind speed: 
                     <span> {wind.speed} m/s</span>
                 </p>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -12,7 +12,8 @@ const Time = () => {
 
     return(
         <div className="time">
-            <div className="time__day center">
+            Current day
+            {/* <div className="time__day center">
                 {printDayName(date.getDay())}
             </div>
             <div className="time__hour center">
@@ -26,7 +27,7 @@ const Time = () => {
             </div>
             <div className="time__date--value center">
                 {date.toLocaleDateString()}
-            </div>
+            </div> */}
         </div>
     );
 };

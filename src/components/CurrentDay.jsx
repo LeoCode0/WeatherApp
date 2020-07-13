@@ -1,9 +1,11 @@
 import React from "react";
+import '../css/currentDay.css';
 
 const CurrentDay = () => {
   return (
     <section className="currentDay">
       <form className="currentDay__form">
+        <i className="currentDay__form--icon">Icon</i>
         <input
           type="text"
           className="currentDay__form--input"
@@ -17,15 +19,18 @@ const CurrentDay = () => {
       </form>
       <div className="currentDay__imageContainer">
         <img
-          src="/"
+          src="https://picsum.photos/350"
           alt="Current weather"
           className="currentDay__imageContainer--image"
         />
       </div>
-      <h1 className="currentDay__temp">12 C</h1>
+      <div className="currentDay__temp">
+          <h1 className="currentDay__temp--grades">12 </h1>
+          <span className="currentDay__temp--unit">°C</span>
+      </div>
       <div className="currentDay__details">
         <span className="currentDay__details--day">Monday, </span>
-        <span className="currentDay__details--Hour">16:00</span>
+        <span className="currentDay__details--hour">16:00</span>
       </div>
       <div className="currentDay__weather">
         <div className="currentDay__weather--icon">
@@ -37,7 +42,9 @@ const CurrentDay = () => {
           <p>Text 2</p>
         </div>
       </div>
-      <span className="currentDay__name">Xicotepec de Juarez</span>
+      <div className="currentDay__name">
+        <span className="currentDay__name--span">Xicotepec de Juarez</span>
+      </div>
     </section>
   );
 };
