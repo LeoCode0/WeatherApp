@@ -27,7 +27,7 @@ const CurrentDay = ({ props }) => {
   return (
     <section className="currentDay">
       <form className="currentDay__form">
-        <i className="currentDay__form--icon">Icon</i>
+        {/* <i className="currentDay__form--icon">Icon</i> */}
         <input
           type="text"
           className="currentDay__form--input"

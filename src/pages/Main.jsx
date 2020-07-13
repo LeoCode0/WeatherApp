@@ -43,7 +43,7 @@ class Main extends React.Component {
       return (
         <main className="principal">
           <CurrentDay props={this.state.data}/>
-          <Container />
+          <Container props={this.state.data} />
           {/* <GraphicWeather props={this.state.data} />
           <HighLights props={this.state.data} />
           <Week /> */}

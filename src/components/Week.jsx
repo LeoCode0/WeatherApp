@@ -2,6 +2,8 @@ import React from "react";
 import getData from "../util/getData";
 import Day from "./Day";
 
+import Time from '../util/time'
+
 import '../css/week.css'
 
 class Week extends React.Component {
@@ -27,6 +29,8 @@ class Week extends React.Component {
   }
 
   render() {
+    const day = Time()
+    const nextDays = [Time(day.dateId + 1), Time(day.dateId + 2), Time(day.dateId + 3), Time(day.dateId + 4), Time(day.dateId + 5)]
     if (this.state.done === false) {
       return <h1>Loading</h1>;
     }
@@ -38,11 +42,11 @@ class Week extends React.Component {
       // console.log(dates)
       return (
         <div className="week">
-          <Day props={list[0]} />
-          <Day props={list[8]} />
-          <Day props={list[16]} />
-          <Day props={list[24]} />
-          <Day props={list[32]} />
+          <Day weather={list[0]} day={nextDays[0]} />
+          <Day weather={list[8]} day={nextDays[1]} />
+          <Day weather={list[16]} day={nextDays[2]} />
+          <Day weather={list[24]} day={nextDays[3]} />
+          <Day weather={list[32]} day={nextDays[4]} />
         </div>
       );
     }

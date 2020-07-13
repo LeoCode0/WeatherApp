@@ -5,7 +5,7 @@ import Week from './Week'
 
 import '../css/container.css'
 
-const Container = () => {
+const Container = ({props}) => {
   return (
     <section className="container">
       <header className="container__header">
@@ -21,7 +21,7 @@ const Container = () => {
       </div>
       <div className="container__highlights">
           <h1>Today's highlights</h1>
-          <Highlights />
+          <Highlights props={props}/>
       </div>
     </section>
   );
