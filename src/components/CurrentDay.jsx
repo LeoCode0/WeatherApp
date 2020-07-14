@@ -24,20 +24,26 @@ const CurrentDay = ({ props }) => {
     weatherSecondaryImg = "";
     weatherSecondaryDesc = "";
   }
+
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    console.log(e)
+  }
+
   return (
     <section className="currentDay">
       <form className="currentDay__form">
-        {/* <i className="currentDay__form--icon">Icon</i> */}
+        <i className="fas fa-search currentDay__form--icon" ></i>
         <input
           type="text"
           className="currentDay__form--input"
           placeholder="Search City"
+          aria-label="Write city name"
         />
-        <input
-          type="submit"
-          className="currentDay__form--button"
-          value="Search"
-        />
+        <button className="currentDay__form--button" type="submit" onClick={(e) => handleClick(e)} aria-label="search" >
+          <i className="fas fa-crosshairs"></i>
+        </button>
       </form>
       <div className="currentDay__imageContainer">
         <img

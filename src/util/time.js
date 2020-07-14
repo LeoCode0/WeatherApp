@@ -10,6 +10,9 @@ const Time = (value = "default") => {
     "Saturday",
   ];
   const printDayName = (numberDay) => {
+    if (numberDay > 6){
+      numberDay = numberDay - 7
+    }
     return days[numberDay];
   };
   let name;

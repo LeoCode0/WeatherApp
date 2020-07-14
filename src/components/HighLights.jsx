@@ -42,9 +42,9 @@ const Highlights = ({props}) => {
     <section className="highlights">
       <div className="highlights__card">
         <h3 className="highlights__card--title">Wind status</h3>
+        <i className="fas fa-wind highlights__card--icon wind"></i>
         <span className="highlights__card--value">{wind.speed} <span>km/h</span></span>
-        <div className="highlights__card--icon">
-          {/* <i>Icon</i> */}
+        <div className="highlights__card--description">
           <span> {windOrientation}</span>
         </div>
       </div>
@@ -55,21 +55,31 @@ const Highlights = ({props}) => {
       </div>
       <div className="highlights__card">
         <h3 className="highlights__card--title">Sunrise & sunset</h3>
-        <span className="highlights__card--value sun">{sunrise.getHours()}: {sunrise.getMinutes()}</span>
-        <span className="highlights__card--value sun">{sunset.getHours()}: {sunset.getMinutes()}</span>
+        <span className="highlights__card--value sun"> 
+          <i className="fas fa-sun highlights__card--icon sunrise"></i>
+          <i className="fas fa-arrow-up highlights__card--icon sunrise"></i>
+          {sunrise.getHours()}:{sunrise.getMinutes()}
+        </span>
+        <span className="highlights__card--value sun">
+          <i className="fas fa-sun highlights__card--icon sunrise"></i>
+          <i className="fas fa-arrow-down highlights__card--icon sunrise"></i>
+          {sunset.getHours()}:{sunset.getMinutes()}
+        </span>
       </div>
       <div className="highlights__card">
         <h3 className="highlights__card--title">Humidity</h3>
+        <i className="fas fa-water highlights__card--icon humidity"></i>
         <span className="highlights__card--value">{humidity} <span>%</span> </span>
         <div className="graphic"></div>
       </div>
       <div className="highlights__card">
         <h3 className="highlights__card--title">Visibility</h3>
+        <i className="fas fa-eye highlights__card--icon visibility"></i>
         <span className="highlights__card--value">{visibility} <span>km</span></span>
       </div>
       <div className="highlights__card">
         <h3 className="highlights__card--title">Pressure</h3>
-          <span className="highlights__card--value">{pressure}</span>
+          <span className="highlights__card--value">{pressure} hPa</span>
         <div className="graphic"></div>
       </div>
     </section>
