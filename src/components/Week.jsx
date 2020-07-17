@@ -15,12 +15,15 @@ class Week extends React.Component {
       error: false,
     };
   }
-  baseApi = "https://api.openweathermap.org/data/2.5/forecast?";
-  key = "0d28130d18dabc0c8a5038cf0d28b917";
-  API = `${this.baseApi}lat=20.3&lon=-97.97&appid=${this.key}`;
 
+  
   async componentDidMount() {
-    let data = await getData(this.API);
+    const lat = this.props.lat;
+    const lon = this.props.lon;
+    const baseApi = "https://api.openweathermap.org/data/2.5/forecast?";
+    const key = "0d28130d18dabc0c8a5038cf0d28b917";
+    const API = `${baseApi}lat=${lat}&lon=${lon}&appid=${key}`;
+    let data = await getData(API);
     this.setState({
       done: true,
       data: data,
@@ -33,10 +36,9 @@ class Week extends React.Component {
     const nextDays = [Time(day.dateId + 1), Time(day.dateId + 2), Time(day.dateId + 3), Time(day.dateId + 4), Time(day.dateId + 5)]
     if (this.state.done === false) {
       return <h1>Loading</h1>;
-    }
+    } 
 
     if (this.state.done === true) {
-      console.log(this.state.data);
       const list = this.state.data.list;
       // const dates = list.map((x) => x.dt_txt.replace("-", " "));
       // console.log(dates)

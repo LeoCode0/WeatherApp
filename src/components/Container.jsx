@@ -6,6 +6,8 @@ import Week from './Week'
 import '../css/container.css'
 
 const Container = ({props}) => {
+  const lat = props.coord.lat;
+  const lon = props.coord.lon;
   return (
     <section className="container">
       <header className="container__header">
@@ -17,7 +19,7 @@ const Container = ({props}) => {
           </span>
       </header>
       <div className="container__week">
-        <Week />
+        <Week lat={lat} lon={lon}/>
       </div>
       <div className="container__highlights">
           <h1>Today's highlights</h1>

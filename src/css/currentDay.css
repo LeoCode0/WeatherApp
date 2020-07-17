@@ -23,8 +23,19 @@
   padding-left: 6%;
   width: 80%;
 }
+.currentDay__form--input:focus {
+  border: 1px solid #247ba0;
+}
 .currentDay__form--button {
   border-radius: 50px;
+}
+.currentDay__form--button i {
+  font-size: 150%;
+}
+.currentDay__form--button:hover,
+.currentDay__form--button:focus {
+  cursor: pointer;
+  background-color: #247ba0;
 }
 .currentDay__imageContainer {
   display: flex;

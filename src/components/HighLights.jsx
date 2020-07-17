@@ -25,7 +25,6 @@ const Highlights = ({props}) => {
         return "North";
     }
   };
-  console.log(props)
   const wind = props.wind
   const windOrientation = windDirection(wind.deg);
   const humidity = props.main.humidity

@@ -4,12 +4,11 @@ import Time from "../util/time";
 
 import "../css/currentDay.css";
 
-const CurrentDay = ({ props }) => {
+const CurrentDay = (props) => {
   const day = Time();
-  console.log(props);
-  const weather = props.weather;
-  const temp = convertKelvinToCelsius(props.main.temp);
-  const name = props.name;
+  const weather = props.props.weather;
+  const temp = convertKelvinToCelsius(props.props.main.temp);
+  const name = props.props.name;
   const image = `https://openweathermap.org/img/wn/${weather[0].icon}.png`;
   let weatherSecondary;
   let weatherSecondaryDesc;
@@ -25,24 +24,19 @@ const CurrentDay = ({ props }) => {
     weatherSecondaryDesc = "";
   }
 
-
-  const handleClick = (e) => {
-    e.preventDefault()
-    console.log(e)
-  }
-
   return (
     <section className="currentDay">
-      <form className="currentDay__form">
+      <form className="currentDay__form" onSubmit={(e) => props.clickHandler(e)}>
         <i className="fas fa-search currentDay__form--icon" ></i>
         <input
           type="text"
           className="currentDay__form--input"
           placeholder="Search City"
           aria-label="Write city name"
+          onChange={(e) => props.handleChange(e)}
         />
-        <button className="currentDay__form--button" type="submit" onClick={(e) => handleClick(e)} aria-label="search" >
-          <i className="fas fa-crosshairs"></i>
+        <button className="currentDay__form--button" type="submit" aria-label="search" >
+          <i className="fas fa-crosshairs" aria-hidden="true" ></i>
         </button>
       </form>
       <div className="currentDay__imageContainer">
