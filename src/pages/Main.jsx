@@ -1,10 +1,10 @@
 import React from "react";
 import getData from "../util/getData";
 
-import CurrentDay from '../components/CurrentDay';
-import Container from '../components/Container'
+import CurrentDay from "../components/CurrentDay";
+import Container from "../components/Container";
 
-import '../css/principal.css'
+import "../css/principal.css";
 
 class Main extends React.Component {
   constructor() {
@@ -17,10 +17,10 @@ class Main extends React.Component {
     };
     // this.handleChange = this.handleChange.bind(this)
   }
-  city = 'xicotepec+de+juarez'
-  baseApi = "https://api.openweathermap.org/data/2.5/weather?";
-  key = "0d28130d18dabc0c8a5038cf0d28b917";
-  API = `${this.baseApi}q=${this.city}&appid=${this.key}`;
+  city = "xicotepec+de+juarez";
+  baseApi = "https://api.openweathermap.org/data/2.5/weather?q=";
+  key = "&appid=0d28130d18dabc0c8a5038cf0d28b917";
+  API = `${this.baseApi}${this.city}${this.key}`;
 
   async componentDidMount() {
     let data = await getData(this.API);
@@ -28,37 +28,61 @@ class Main extends React.Component {
       done: true,
       loading: false,
       data: data,
-      error: false,
-      city: 'xicotepec+de+juarez',
+      error: null,
     });
   }
 
-  handleChange = (e) =>{
-    this.city = e.target.value
-    console.log(this.city)
-  }
+  handleChange = (e) => {
+    this.city = e.target.value;
+  };
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.city)
-    let ns = this.city.replace(/ /gi, '+')
-    console.log(ns)
-  }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    let anotherCity = this.city.replace(/ /gi, "+");
+
+    this.setState({
+      loading: true,
+      error: null,
+    });
+
+    this.API = `${this.baseApi}${anotherCity}${this.key}`;
+    const newLocation = await getData(this.API);
+    console.log(newLocation)
+    // eslint-disable-next-line eqeqeq
+    if (newLocation.cod != 200){
+      const error = new Error(newLocation.message)
+      this.setState({
+        loading: false,
+        done: true,
+        data: this.state.data,
+        error: error
+      })
+    } else{
+      this.setState({
+        loading: false,
+        done: true,
+        data: newLocation,
+        error: null,
+      });
+    }
+  };
 
   render() {
+
     if (this.state.done === false && this.state.loading === true) {
       return <h1>Loading</h1>;
     }
 
-    console.log(this.state.data)
-
     if (this.state.done === true) {
       return (
         <main className="principal">
-          <CurrentDay props={this.state.data} clickHandler={this.handleSubmit} handleChange={this.handleChange}/>
+          <CurrentDay
+            props={this.state.data}
+            clickHandler={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
           <Container props={this.state.data} />
         </main>
-        
       );
     }
   }
