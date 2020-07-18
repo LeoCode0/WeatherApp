@@ -3,6 +3,8 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.5);
+  animation: shimy 1s;
+  animation-direction: alternate;
 }
 .modal__container {
   background-color: #fff;
@@ -30,9 +32,42 @@
 .modal__container--icon:hover {
   color: #00f300;
 }
+.modal__container--icon:active,
+.modal__container--icon:focus {
+  border: 2px solid #008000;
+}
 .modal__container--title {
   color: #f00;
 }
-.hide {
-  display: none;
+@-moz-keyframes shimmy {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 50px);
+  }
+}
+@-webkit-keyframes shimmy {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 50px);
+  }
+}
+@-o-keyframes shimmy {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 50px);
+  }
+}
+@keyframes shimmy {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 50px);
+  }
 }

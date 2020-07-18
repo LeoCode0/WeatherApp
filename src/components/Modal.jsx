@@ -3,14 +3,16 @@ import React from "react";
 import "../css/modal.css";
 
 const Modal = ({ error, modal, handleModal }) => {
-  if (modal) {
+  if (modal && error) {
     return (
       <div className="modal">
         <div className="modal__container">
           <i
             className="fas fa-times-circle modal__container--icon"
             onClick={handleModal}
+            onKeyPress={handleModal}
             aria-hidden="false"
+            tabIndex="0"
           ></i>
           <h1 className="modal__container--title">Error</h1>
           <span className="modal__container--error">{error.message}</span>

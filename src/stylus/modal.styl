@@ -3,6 +3,8 @@
     width: 100vw
     height: 100vh
     background: rgba(0, 0 , 0, 0.5)
+    animation: shimy 1s
+    animation-direction: alternate
     &__container
         background-color: #FFF
         height 50%
@@ -26,8 +28,15 @@
             cursor pointer
             &:hover
                 color: lighten(green, 30%)
+            &:active, &:focus
+                border: 2px solid green
         &--title
             color: red
 
-.hide
-    display: none
+
+@keyframes shimmy 
+  0% 
+    transform: translate(0, 0)
+  100% 
+    transform: translate(20px, 50px)
+  

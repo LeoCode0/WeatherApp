@@ -49,7 +49,6 @@ class Main extends React.Component {
 
     this.API = `${this.baseApi}${anotherCity}${this.key}`;
     const newLocation = await getData(this.API);
-    console.log(newLocation)
     // eslint-disable-next-line eqeqeq
     if (newLocation.cod != 200){
       const error = new Error(newLocation.message)
