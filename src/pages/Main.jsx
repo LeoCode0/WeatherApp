@@ -3,7 +3,7 @@ import getData from "../util/getData";
 
 import CurrentDay from "../components/CurrentDay";
 import Container from "../components/Container";
-import Modal from '../components/Modal';
+import Modal from "../components/Modal";
 
 import "../css/principal.css";
 
@@ -15,7 +15,7 @@ class Main extends React.Component {
       loading: true,
       data: undefined,
       error: false,
-      modal: false
+      modal: false,
     };
     // this.handleChange = this.handleChange.bind(this)
   }
@@ -50,16 +50,16 @@ class Main extends React.Component {
     this.API = `${this.baseApi}${anotherCity}${this.key}`;
     const newLocation = await getData(this.API);
     // eslint-disable-next-line eqeqeq
-    if (newLocation.cod != 200){
-      const error = new Error(newLocation.message)
+    if (newLocation.cod != 200) {
+      const error = new Error(newLocation.message);
       this.setState({
         loading: false,
         done: true,
         data: this.state.data,
         error: error,
-        modal: true
-      })
-    } else{
+        modal: true,
+      });
+    } else {
       this.setState({
         loading: false,
         done: true,
@@ -71,12 +71,11 @@ class Main extends React.Component {
 
   handleModal = () => {
     this.setState({
-      modal: false
-    })
-  }
+      modal: false,
+    });
+  };
 
   render() {
-
     if (this.state.done === false && this.state.loading === true) {
       return <h1>Loading</h1>;
     }
@@ -90,7 +89,11 @@ class Main extends React.Component {
             handleChange={this.handleChange}
           />
           <Container props={this.state.data} />
-          <Modal error={this.state.error} modal={this.state.modal} handleModal={this.handleModal}/>
+          <Modal
+            error={this.state.error}
+            modal={this.state.modal}
+            handleModal={this.handleModal}
+          />
         </main>
       );
     }

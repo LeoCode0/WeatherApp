@@ -2,9 +2,9 @@ import React from "react";
 import getData from "../util/getData";
 import Day from "./Day";
 
-import Time from '../util/time'
+import Time from "../util/time";
 
-import '../css/week.css'
+import "../css/week.css";
 
 class Week extends React.Component {
   constructor() {
@@ -16,7 +16,6 @@ class Week extends React.Component {
     };
   }
 
-  
   async componentDidMount() {
     const lat = this.props.lat;
     const lon = this.props.lon;
@@ -32,11 +31,17 @@ class Week extends React.Component {
   }
 
   render() {
-    const day = Time()
-    const nextDays = [Time(day.dateId + 1), Time(day.dateId + 2), Time(day.dateId + 3), Time(day.dateId + 4), Time(day.dateId + 5)]
+    const day = Time();
+    const nextDays = [
+      Time(day.dateId + 1),
+      Time(day.dateId + 2),
+      Time(day.dateId + 3),
+      Time(day.dateId + 4),
+      Time(day.dateId + 5),
+    ];
     if (this.state.done === false) {
       return <h1>Loading</h1>;
-    } 
+    }
 
     if (this.state.done === true) {
       const list = this.state.data.list;

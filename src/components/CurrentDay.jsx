@@ -26,8 +26,11 @@ const CurrentDay = (props) => {
 
   return (
     <section className="currentDay">
-      <form className="currentDay__form" onSubmit={(e) => props.clickHandler(e)}>
-        <i className="fas fa-search currentDay__form--icon" ></i>
+      <form
+        className="currentDay__form"
+        onSubmit={(e) => props.clickHandler(e)}
+      >
+        <i className="fas fa-search currentDay__form--icon"></i>
         <input
           type="text"
           className="currentDay__form--input"
@@ -35,8 +38,12 @@ const CurrentDay = (props) => {
           aria-label="Write city name"
           onChange={(e) => props.handleChange(e)}
         />
-        <button className="currentDay__form--button" type="submit" aria-label="search" >
-          <i className="fas fa-crosshairs" aria-hidden="true" ></i>
+        <button
+          className="currentDay__form--button"
+          type="submit"
+          aria-label="search"
+        >
+          <i className="fas fa-crosshairs" aria-hidden="true"></i>
         </button>
       </form>
       <div className="currentDay__imageContainer">
