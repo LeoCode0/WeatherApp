@@ -5,6 +5,7 @@ import Day from "./Day";
 import Time from "../util/time";
 
 import "../css/week.css";
+import "../css/spinner.css";
 
 class Week extends React.Component {
   constructor() {
@@ -40,13 +41,19 @@ class Week extends React.Component {
       Time(day.dateId + 5),
     ];
     if (this.state.done === false) {
-      return <h1>Loading</h1>;
+      return (
+        <div class="spinner">
+          <div class="recta1"></div>
+          <div class="recta2"></div>
+          <div class="recta3"></div>
+          <div class="recta4"></div>
+          <div class="recta5"></div>
+        </div>
+      );
     }
 
-    if (this.state.done === true) {
+    if (this.state.done === true && this.state.data) {
       const list = this.state.data.list;
-      // const dates = list.map((x) => x.dt_txt.replace("-", " "));
-      // console.log(dates)
       return (
         <div className="week">
           <Day weather={list[0]} day={nextDays[0]} />
