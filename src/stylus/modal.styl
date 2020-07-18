@@ -1,0 +1,33 @@
+.modal
+    position: fixed
+    width: 100vw
+    height: 100vh
+    background: rgba(0, 0 , 0, 0.5)
+    &__container
+        background-color: #FFF
+        height 50%
+        width 50%
+        position absolute
+        z-index: 4
+        left 25%
+        bottom: 25%
+        border-radius: 30px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-content: center
+        align-items: center
+        &--icon
+            position absolute
+            color green
+            font-size: 300%
+            top: 10%
+            right: 10%
+            cursor pointer
+            &:hover
+                color: lighten(green, 30%)
+        &--title
+            color: red
+
+.hide
+    display: none

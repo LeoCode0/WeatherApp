@@ -1,0 +1,38 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+}
+.modal__container {
+  background-color: #fff;
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  z-index: 4;
+  left: 25%;
+  bottom: 25%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.modal__container--icon {
+  position: absolute;
+  color: #008000;
+  font-size: 300%;
+  top: 10%;
+  right: 10%;
+  cursor: pointer;
+}
+.modal__container--icon:hover {
+  color: #00f300;
+}
+.modal__container--title {
+  color: #f00;
+}
+.hide {
+  display: none;
+}

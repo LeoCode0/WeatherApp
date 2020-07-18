@@ -3,6 +3,7 @@ import getData from "../util/getData";
 
 import CurrentDay from "../components/CurrentDay";
 import Container from "../components/Container";
+import Modal from '../components/Modal';
 
 import "../css/principal.css";
 
@@ -76,12 +77,13 @@ class Main extends React.Component {
     if (this.state.done === true) {
       return (
         <main className="principal">
-          <CurrentDay
+          {/* <CurrentDay
             props={this.state.data}
             clickHandler={this.handleSubmit}
             handleChange={this.handleChange}
           />
-          <Container props={this.state.data} />
+          <Container props={this.state.data} /> */}
+          <Modal error={this.state.error}/>
         </main>
       );
     }
