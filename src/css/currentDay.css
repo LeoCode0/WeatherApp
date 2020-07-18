@@ -108,3 +108,13 @@
   color: #000;
   border-radius: 20px;
 }
+@media only screen and (max-width: 800px) {
+  .currentDay {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .currentDay__imageContainer--image {
+    height: 140px;
+  }
+}

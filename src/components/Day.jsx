@@ -18,7 +18,7 @@ const Day = (props) => {
         </div>
         <div className="day__description">
           <span className="day__description--span">
-            {convertKelvinToCelsius(main.temp)}
+            {convertKelvinToCelsius(main.temp)} °C
           </span>
         </div>
       </div>

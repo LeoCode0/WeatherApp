@@ -42,12 +42,12 @@ class Week extends React.Component {
     ];
     if (this.state.done === false) {
       return (
-        <div class="spinner">
-          <div class="recta1"></div>
-          <div class="recta2"></div>
-          <div class="recta3"></div>
-          <div class="recta4"></div>
-          <div class="recta5"></div>
+        <div className="spinner">
+          <div className="recta1"></div>
+          <div className="recta2"></div>
+          <div className="recta3"></div>
+          <div className="recta4"></div>
+          <div className="recta5"></div>
         </div>
       );
     }
