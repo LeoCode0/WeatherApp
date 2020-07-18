@@ -54,6 +54,6 @@
 @media only screen and (max-width: 800px) {
   .highlights {
     grid-template-columns: 100%;
-    grid-template-rows: repeat(6, 20vh);
+    grid-template-rows: repeat(6, 200px);
   }
 }

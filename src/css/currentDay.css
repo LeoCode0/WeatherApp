@@ -24,7 +24,7 @@
   width: 80%;
 }
 .currentDay__form--input:focus {
-  border: 1px solid #247ba0;
+  border: 1px solid #add8e6;
 }
 .currentDay__form--button {
   border-radius: 50px;
@@ -35,7 +35,7 @@
 .currentDay__form--button:hover,
 .currentDay__form--button:focus {
   cursor: pointer;
-  background-color: #247ba0;
+  background-color: #add8e6;
 }
 .currentDay__imageContainer {
   display: flex;

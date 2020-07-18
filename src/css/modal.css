@@ -3,8 +3,6 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.5);
-  animation: shimy 1s;
-  animation-direction: alternate;
 }
 .modal__container {
   background-color: #fff;
@@ -39,35 +37,14 @@
 .modal__container--title {
   color: #f00;
 }
-@-moz-keyframes shimmy {
-  0% {
-    transform: translate(0, 0);
+@media only screen and (max-width: 800px) {
+  .modal__container {
+    width: 70%;
+    left: 15%;
+    text-align: center;
+    padding: 0 50px;
   }
-  100% {
-    transform: translate(20px, 50px);
-  }
-}
-@-webkit-keyframes shimmy {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 50px);
-  }
-}
-@-o-keyframes shimmy {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 50px);
-  }
-}
-@keyframes shimmy {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 50px);
+  .modal__container--error {
+    text-transform: uppercase;
   }
 }

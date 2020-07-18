@@ -45,5 +45,6 @@
   .container__week {
     width: auto;
     overflow-x: scroll;
+    height: 125px;
   }
 }

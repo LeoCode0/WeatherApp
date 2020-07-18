@@ -3,8 +3,6 @@
     width: 100vw
     height: 100vh
     background: rgba(0, 0 , 0, 0.5)
-    animation: shimy 1s
-    animation-direction: alternate
     &__container
         background-color: #FFF
         height 50%
@@ -33,10 +31,11 @@
         &--title
             color: red
 
-
-@keyframes shimmy 
-  0% 
-    transform: translate(0, 0)
-  100% 
-    transform: translate(20px, 50px)
-  
+@media only screen and (max-width 800px)
+  .modal__container
+    width: 70%
+    left 15%
+    text-align: center
+    padding: 0 50px
+    &--error
+      text-transform: uppercase
