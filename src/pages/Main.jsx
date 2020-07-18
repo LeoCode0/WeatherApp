@@ -4,6 +4,7 @@ import getData from "../util/getData";
 import CurrentDay from "../components/CurrentDay";
 import Container from "../components/Container";
 import Modal from "../components/Modal";
+import Loader from "../components/Loader";
 
 import "../css/principal.css";
 
@@ -77,7 +78,7 @@ class Main extends React.Component {
 
   render() {
     if (this.state.done === false && this.state.loading === true) {
-      return <h1>Loading</h1>;
+      return <Loader />;
     }
 
     if (this.state.done === true) {
