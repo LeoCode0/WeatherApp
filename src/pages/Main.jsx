@@ -15,6 +15,7 @@ class Main extends React.Component {
       loading: true,
       data: undefined,
       error: false,
+      modal: false
     };
     // this.handleChange = this.handleChange.bind(this)
   }
@@ -56,7 +57,8 @@ class Main extends React.Component {
         loading: false,
         done: true,
         data: this.state.data,
-        error: error
+        error: error,
+        modal: true
       })
     } else{
       this.setState({
@@ -68,6 +70,12 @@ class Main extends React.Component {
     }
   };
 
+  handleModal = () => {
+    this.setState({
+      modal: false
+    })
+  }
+
   render() {
 
     if (this.state.done === false && this.state.loading === true) {
@@ -77,13 +85,13 @@ class Main extends React.Component {
     if (this.state.done === true) {
       return (
         <main className="principal">
-          {/* <CurrentDay
+          <CurrentDay
             props={this.state.data}
             clickHandler={this.handleSubmit}
             handleChange={this.handleChange}
           />
-          <Container props={this.state.data} /> */}
-          <Modal error={this.state.error}/>
+          <Container props={this.state.data} />
+          <Modal error={this.state.error} modal={this.state.modal} handleModal={this.handleModal}/>
         </main>
       );
     }
