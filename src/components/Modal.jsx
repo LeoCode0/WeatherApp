@@ -3,13 +3,14 @@ import React from "react";
 import "../css/modal.css";
 
 const Modal = ({ error, modal, handleModal }) => {
-  let defaultError = 'Por favor escriba correctamente el nombre de la ciudad'
-
-
+  let defaultError = "No tenemos información de la ciudad ingresada";
   if (modal && error) {
+    if (error.code === 1) {
+      defaultError = "No tuvimos acceso a su ubicacion";
+    }
 
-    if (error.code === 1 ){
-      defaultError = 'No tuvimos acceso a su ubicacion'
+    if(error.message === '11'){
+      defaultError = 'Por favor encienda su ubicación para poder mandar notificaciones'
     }
 
     return (
@@ -23,10 +24,7 @@ const Modal = ({ error, modal, handleModal }) => {
             tabIndex="0"
           ></i>
           <h1 className="modal__container--title">Error</h1>
-          <span className="modal__container--error">{error.message}</span>
-          <p className="modal__container--message">
-            {defaultError}
-          </p>
+          <p className="modal__container--message">{defaultError}</p>
         </div>
       </div>
     );

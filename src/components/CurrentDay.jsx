@@ -30,7 +30,6 @@ const CurrentDay = (props) => {
         className="currentDay__form"
         onSubmit={(e) => props.clickHandler(e)}
       >
-        <i className="fas fa-search currentDay__form--icon"></i>
         <input
           type="text"
           className="currentDay__form--input"
@@ -43,7 +42,7 @@ const CurrentDay = (props) => {
           type="submit"
           aria-label="search"
         >
-          <i className="fas fa-crosshairs" aria-hidden="true"></i>
+          <i className="fas fa-search " aria-hidden="true"></i>
         </button>
       </form>
       <div className="currentDay__imageContainer">
@@ -73,6 +72,22 @@ const CurrentDay = (props) => {
           <p>{weatherSecondaryDesc}</p>
         </div>
       </div>
+      <section className="icons">
+        <div className="">
+          <i
+            className="fas fa-crosshairs currentDay__form--icon"
+            onClick={props.handleLocation}
+          ></i>
+          <span>Ubication</span>
+        </div>
+        <div className="">
+          <i
+            className="fas fa-comment-alt"
+            onClick={props.handleNotification}
+          ></i>
+          <span>Notifications</span>
+        </div>
+      </section>
       <div className="currentDay__name">
         <span className="currentDay__name--span">{name}</span>
       </div>

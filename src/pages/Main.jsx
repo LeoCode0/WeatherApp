@@ -17,6 +17,8 @@ class Main extends React.Component {
       data: undefined,
       error: false,
       modal: false,
+      latitude: null,
+      longitude: null,
     };
   }
   city = "mexico";
@@ -32,36 +34,76 @@ class Main extends React.Component {
       data: data,
       error: null,
     });
-    this.getGeolocation()
   }
 
-  async getGeolocation() {
-    let latitude;
-    let longitude;
+  localLatitude;
+  localLongitude;
+
+  getGeolocation = async () => {
     let error;
+    if (this.localLatitude === undefined && this.localLongitude === undefined) {
+      navigator.geolocation.getCurrentPosition(
+        async (objPosition) => {
+          this.localLatitude = objPosition.coords.latitude;
+          this.localLongitude = objPosition.coords.longitude;
+          this.localLongitude = this.localLongitude.toFixed(2);
+          this.localLatitude = this.localLatitude.toFixed(2);
+          const newLocation = await getData(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${this.localLatitude}&lon=${this.localLongitude}${this.key}`
+          );
+          this.city = newLocation.name.replace(/ /gi, "+");
+          this.setState({
+            data: newLocation,
+            error: false,
+            latitude: this.localLatitude,
+            longitude: this.localLongitude,
+          });
+        },
+        (objPositionError) => {
+          error = objPositionError;
+          this.setState({
+            error: error,
+            modal: true,
+          });
+        }
+      );
+    } else {
+      const local = await getData(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${this.localLatitude}&lon=${this.localLongitude}${this.key}`
+      );
+      this.setState({
+        data: local,
+      });
+    }
+  };
 
-    navigator.geolocation.getCurrentPosition(
-      async (objPosition) => {
-        latitude = objPosition.coords.latitude;
-        longitude = objPosition.coords.longitude;
-        longitude = longitude.toFixed(2)
-        latitude = latitude.toFixed(2)
-        const newLocation = await getData(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}${this.key}`)
-        this.setState({
-          data: newLocation,
-          error: false
-        })
-      },
-      (objPositionError) => {
-        error = objPositionError;
-        this.setState({
-          error: error,
-          modal: true
-        })
-      }
-    );
-  }
-
+  sendNotifications = async () => {
+    if (this.localLatitude && this.localLongitude) {
+      const permission = await Notification.requestPermission();
+      const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${this.localLatitude}&lon=${this.localLongitude}&
+      exclude=daily${this.key}`;
+      const data = await getData(api);
+      const title = "weather in next 4 hours";
+      const time = data.hourly[1].weather[0];
+      const hours = new Date()
+      const config = {
+        body: `
+        ${time.main}: ${time.description} ${hours.getHours() + 1}:${hours.getMinutes()}
+        ${data.hourly[2].weather[0].main}: ${data.hourly[2].weather[0].description} ${hours.getHours() + 2}:${hours.getMinutes()}
+        ${data.hourly[3].weather[0].main}: ${data.hourly[3].weather[0].description} ${hours.getHours() + 3}:${hours.getMinutes()}
+        ${data.hourly[4].weather[0].main}: ${data.hourly[4].weather[0].description} ${hours.getHours() + 4}:${hours.getMinutes()}
+        `,
+        icon: `https://openweathermap.org/img/wn/${time.icon}.png`,
+      };
+      const n = new Notification(title, config);
+    } else {
+      let noUbication = new Error(11);
+      this.setState({
+        error: noUbication,
+        modal: true,
+      });
+    }
+  };
 
   handleChange = (e) => {
     this.city = e.target.value;
@@ -94,6 +136,8 @@ class Main extends React.Component {
         done: true,
         data: newLocation,
         error: null,
+        latitude: newLocation.coord.lat,
+        longitude: newLocation.coord.lon,
       });
     }
   };
@@ -116,6 +160,8 @@ class Main extends React.Component {
             props={this.state.data}
             clickHandler={this.handleSubmit}
             handleChange={this.handleChange}
+            handleLocation={this.getGeolocation}
+            handleNotification={this.sendNotifications}
           />
           <Container props={this.state.data} />
           <Modal

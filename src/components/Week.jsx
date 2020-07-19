@@ -37,8 +37,8 @@ class Week extends React.Component {
   update = async () => {
     const newLocation = `${this.baseApi}lat=${this.props.lat}&lon=${this.props.lon}&appid=${this.key}`;
     const data = await getData(newLocation);
-    console.log(data);
     this.setState({
+      done: true,
       data: data,
       longitude: this.props.lon,
       latitude: this.props.lat,
