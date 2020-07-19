@@ -14,22 +14,36 @@ class Week extends React.Component {
       done: false,
       data: undefined,
       error: false,
+      latitude: null,
+      longitude: null,
     };
   }
 
+  baseApi = "https://api.openweathermap.org/data/2.5/forecast?";
+  key = "0d28130d18dabc0c8a5038cf0d28b917";
+
   async componentDidMount() {
-    const lat = this.props.lat;
-    const lon = this.props.lon;
-    const baseApi = "https://api.openweathermap.org/data/2.5/forecast?";
-    const key = "0d28130d18dabc0c8a5038cf0d28b917";
-    const API = `${baseApi}lat=${lat}&lon=${lon}&appid=${key}`;
+    const API = `${this.baseApi}lat=${this.props.lat}&lon=${this.props.lon}&appid=${this.key}`;
     let data = await getData(API);
     this.setState({
       done: true,
       data: data,
       error: false,
+      longitude: this.props.lon,
+      latitude: this.props.lat,
     });
   }
+
+  update = async () => {
+    const newLocation = `${this.baseApi}lat=${this.props.lat}&lon=${this.props.lon}&appid=${this.key}`;
+    const data = await getData(newLocation);
+    console.log(data);
+    this.setState({
+      data: data,
+      longitude: this.props.lon,
+      latitude: this.props.lat,
+    });
+  };
 
   render() {
     const day = Time();
@@ -53,6 +67,12 @@ class Week extends React.Component {
     }
 
     if (this.state.done === true && this.state.data) {
+      if (
+        this.state.latitude !== this.props.lat ||
+        this.state.longitude !== this.props.lon
+      ) {
+        this.update()
+      }
       const list = this.state.data.list;
       return (
         <div className="week">

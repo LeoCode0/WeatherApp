@@ -18,9 +18,8 @@ class Main extends React.Component {
       error: false,
       modal: false,
     };
-    // this.handleChange = this.handleChange.bind(this)
   }
-  city = "xicotepec+de+juarez";
+  city = "mexico";
   baseApi = "https://api.openweathermap.org/data/2.5/weather?q=";
   key = "&appid=0d28130d18dabc0c8a5038cf0d28b917";
   API = `${this.baseApi}${this.city}${this.key}`;
@@ -33,7 +32,36 @@ class Main extends React.Component {
       data: data,
       error: null,
     });
+    this.getGeolocation()
   }
+
+  async getGeolocation() {
+    let latitude;
+    let longitude;
+    let error;
+
+    navigator.geolocation.getCurrentPosition(
+      async (objPosition) => {
+        latitude = objPosition.coords.latitude;
+        longitude = objPosition.coords.longitude;
+        longitude = longitude.toFixed(2)
+        latitude = latitude.toFixed(2)
+        const newLocation = await getData(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}${this.key}`)
+        this.setState({
+          data: newLocation,
+          error: false
+        })
+      },
+      (objPositionError) => {
+        error = objPositionError;
+        this.setState({
+          error: error,
+          modal: true
+        })
+      }
+    );
+  }
+
 
   handleChange = (e) => {
     this.city = e.target.value;
